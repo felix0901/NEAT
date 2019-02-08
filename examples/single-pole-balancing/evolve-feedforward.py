@@ -3,7 +3,12 @@ Single-pole balancing experiment using a feed-forward neural network.
 """
 
 from __future__ import print_function
-
+##=========added to search for self-defined module==========
+import sys
+sys.path.insert(0, "/Users/chuchu/Documents/code/neat-python")
+##==========================================================
+import matplotlib
+matplotlib.use("Agg")
 import os
 import pickle
 
@@ -19,7 +24,7 @@ simulation_seconds = 60.0
 # Use the NN network phenotype and the discrete actuator force function.
 def eval_genome(genome, config):
     net = neat.nn.FeedForwardNetwork.create(genome, config)
-
+    net.my_create_net_layer(genome, config)
     fitnesses = []
 
     for runs in range(runs_per_net):
@@ -29,8 +34,8 @@ def eval_genome(genome, config):
         fitness = 0.0
         while sim.t < simulation_seconds:
             inputs = sim.get_scaled_state()
-            action = net.activate(inputs)
-
+            #action = net.activate(inputs)
+            action = net.my_activate(inputs)
             # Apply action to the simulated cart-pole
             force = cart_pole.discrete_actuator_force(action)
             sim.step(force)
@@ -68,8 +73,9 @@ def run():
     pop.add_reporter(stats)
     pop.add_reporter(neat.StdOutReporter(True))
 
-    pe = neat.ParallelEvaluator(4, eval_genome)
-    winner = pop.run(pe.evaluate)
+    # pe = neat.ParallelEvaluator(4, eval_genome)
+    # winner = pop.run(pe.evaluate)
+    winner = pop.run(eval_genomes, 50)
 
     # Save the winner.
     with open('winner-feedforward', 'wb') as f:

@@ -3,7 +3,10 @@
 # Sample run here: https://gym.openai.com/evaluations/eval_FbKq5MxAS9GlvB7W6ioJkg
 
 from __future__ import print_function
-
+## matplotlib error fixing==
+import matplotlib
+matplotlib.use('Agg')
+##==========================
 import gym
 import gym.wrappers
 

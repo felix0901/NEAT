@@ -3,21 +3,33 @@
 """
 
 from __future__ import print_function
+##=========added to search for self-defined module==========
+import sys
+sys.path.insert(0, "/Users/chuchu/Documents/code/neat-python")
+##==========================================================
+
 import os
 import neat
 import visualize
+import pickle
 
+# c
+
+
+    #
 # 2-input XOR inputs and expected outputs.
-xor_inputs = [(0.0, 0.0), (0.0, 1.0), (1.0, 0.0), (1.0, 1.0)]
-xor_outputs = [   (0.0,),     (1.0,),     (1.0,),     (0.0,)]
+xor_inputs = [(1.0, 0.0), (0.0, 0.0), (0.0, 1.0) , (1.0, 1.0)]
+xor_outputs = [ (1.0,) , (0.0,),     (1.0,)     ,     (0.0,)]
 
 
 def eval_genomes(genomes, config):
     for genome_id, genome in genomes:
         genome.fitness = 4.0
         net = neat.nn.FeedForwardNetwork.create(genome, config)
+        net.my_create_net_layer(genome, config)
         for xi, xo in zip(xor_inputs, xor_outputs):
-            output = net.activate(xi)
+            #output = net.activate(xi)
+            output = net.my_activate(xi)
             genome.fitness -= (output[0] - xo[0]) ** 2
 
 
@@ -44,9 +56,14 @@ def run(config_file):
 
     # Show output of the most fit genome against training data.
     print('\nOutput:')
+    with open("my_network.data", 'wb') as fd:
+        pickle.dump((winner, config, xor_inputs, xor_outputs), fd)
+
     winner_net = neat.nn.FeedForwardNetwork.create(winner, config)
+    winner_net.my_create_net_layer(winner, config)
     for xi, xo in zip(xor_inputs, xor_outputs):
-        output = winner_net.activate(xi)
+        #output = winner_net.activate(xi)
+        output = winner_net.my_activate(xi)
         print("input {!r}, expected output {!r}, got {!r}".format(xi, xo, output))
 
     node_names = {-1:'A', -2: 'B', 0:'A XOR B'}
@@ -54,8 +71,8 @@ def run(config_file):
     visualize.plot_stats(stats, ylog=False, view=True)
     visualize.plot_species(stats, view=True)
 
-    p = neat.Checkpointer.restore_checkpoint('neat-checkpoint-4')
-    p.run(eval_genomes, 10)
+    # p = neat.Checkpointer.restore_checkpoint('neat-checkpoint-4')
+    # p.run(eval_genomes, 10)
 
 
 if __name__ == '__main__':
