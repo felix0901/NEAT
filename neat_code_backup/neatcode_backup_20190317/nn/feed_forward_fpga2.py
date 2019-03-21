@@ -5,20 +5,22 @@ import serial
 import time
 from neat.activations import sigmoid_activation
 class FeedForwardNetworkFPGA(object):
-    def __init__(self, serial_in_pre, serial_in_post, in_num_nodes, out_num_nodes, quantize=8):
-        self.serial_in_pre = serial_in_pre
-        self.serial_in_post = serial_in_post
+    def __init__(self, serial_in_pre, serial_in_post, in_num_nodes, out_num_nodes, quantize=12):
+        self.serial_in_pre = np.int32(serial_in_pre)
+        self.serial_in_post = np.int32(serial_in_post)
         self.in_num_nodes = in_num_nodes
         self.out_num_nodes = out_num_nodes
         self.quantize = quantize
     def activate_cpu(self, inputs):
-        time_s1 = time.time()
+        #time_s1 = time.time()
         if self.in_num_nodes != len(inputs):
             raise RuntimeError("Expected {0:n} inputs, got {1:n}".format(len(self.input_nodes), len(inputs)))
         quantize_1_time = 2**self.quantize
         quantize_2_time = 2 ** (2 * self.quantize)
         quantize_3_time = 2**(3*self.quantize)
-        serial_in = np.int_(self.serial_in_pre + [int(n * quantize_1_time) for n in inputs] + self.serial_in_post)
+        inputs = np.int32(inputs)
+        inputs *= quantize_1_time
+        serial_in = np.concatenate((self.serial_in_pre, inputs, self.serial_in_post), axis=None)
         o_id = 0
         base_addr = 0
         command_layer = serial_in[base_addr]
@@ -32,10 +34,10 @@ class FeedForwardNetworkFPGA(object):
 
         #====NON-LINEAR=====
             #===relu====aa
-        relu_max_par = 1 * quantize_3_time
+        relu_max_par = 256 * quantize_1_time
         relu_min_par = 0
             #===le_relu======
-        le_relu_par = (2 / quantize_1_time)
+        #le_relu_par = (2 / quantize_1_time)
         #=======================
         for i in range(command_layer):
             in_total_s[i] =  serial_in[base_addr]
@@ -46,10 +48,10 @@ class FeedForwardNetworkFPGA(object):
         base_addr += command_init_total_node
         bias_s = serial_in[base_addr:base_addr+command_init_total_node]
         base_addr += command_init_total_node
-        V_s = np.zeros((command_init_total_node, 1)).astype(int)
+        V_s = np.zeros((command_init_total_node, 1)).astype(np.int32)
         V_s[0:command_init_in_nodes] = serial_in[base_addr:base_addr+command_init_in_nodes].reshape((-1,1))
         base_addr += command_init_in_nodes
-        time_e = 0
+        #time_e = 0
         for layer_idx in range(command_layer):
             out_total, in_total = out_total_s[layer_idx], in_total_s[layer_idx]
             o_id = serial_in[base_addr:base_addr+out_total]
@@ -62,22 +64,22 @@ class FeedForwardNetworkFPGA(object):
             I = V_s[i_id]
             resp = resp_s[o_id].reshape(out_total, -1)
             bias = bias_s[o_id].reshape(out_total, -1)
-            time_s = time.time()
-            O = np.matmul(W, I)
-            V = (resp * O + bias)
+            #time_s = time.time()
+            O = np.matmul(W, I) // quantize_1_time
+            V = (resp * O // quantize_1_time + bias)
             #====No activation===
             #V_s[o_id] = V
             #==================
             #====relu====
-            V_s[o_id] = np.int_(np.maximum(np.minimum(V, relu_max_par), relu_min_par) // quantize_2_time)
-            time_e += time.time() - time_s
+            V_s[o_id] = np.maximum(np.minimum(V, relu_max_par), relu_min_par)
+            #time_e += time.time() - time_s
             #===le_relu======
             #V_s[o_id] = np.int_(np.maximum(np.minimum(V, relu_max_par), V * le_relu_par) / quantize_2_time)
         ret = [float(v/quantize_1_time) for v in V_s[o_id]]
-        time_e = 1000 * (time_e)
-        time_all = 1000 * (time.time() - time_s1)
-        print("Calculation time ", time_e, "msec")
-        print("Data processing time ", time_all-time_e, "msec")
+        #time_e = 1000 * (time_e)
+        #time_all = 1000 * (time.time() - time_s1)
+        #print("Calculation time ", time_e, "msec")
+        #print("Data processing time ", time_all-time_e, "msec")
         return ret
 
 
@@ -126,7 +128,7 @@ class FeedForwardNetworkFPGA(object):
         return result_serial
 
     @staticmethod
-    def create(genome, config, quantize = 8):
+    def create(genome, config, quantize = 12):
         """ Receives a genome and returns its phenotype (a FeedForwardNetwork). """
         idx = 0
         valueIDMap_neat2fpga = dict()
@@ -157,7 +159,7 @@ class FeedForwardNetworkFPGA(object):
             o_id = valueIDMap_fpga2neat[idx]
             ng = genome.nodes[o_id]
             resp_s[idx] = int(ng.response * 2**quantize)
-            bias_s[idx] = int(ng.bias * 2**(quantize + quantize + quantize))
+            bias_s[idx] = int(ng.bias * 2**(quantize))
         serial_in_pre = command_s
         serial_in_post = []
         for layer in layers:
@@ -193,7 +195,7 @@ class FeedForwardNetworkFPGA(object):
 
 
 if __name__ == '__main__':
-    serial_in_pre = [2, 4, 2, 2, 1, 3, 1, 0, 0, 256, 256, 0, 0, -8338623, -217866857]
+    serial_in_pre = [2, 4, 2, 2, 1, 3, 1, 0, 0, 256, 256, 0, 0, -10, -20]
     serial_in_post =[3,0,1, -888, 571,2,3,1,0,682,-247,326]
     in_num_nodes = 2
     out_num_nodes = 1

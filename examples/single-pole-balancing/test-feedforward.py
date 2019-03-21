@@ -20,8 +20,8 @@ with open("my_network.data", 'rb') as fd:
 print('Loaded genome:')
 print(winner)
 
-#winner_net = neat.nn.FeedForwardNetworkFPGA.create(winner, config)
-winner_net = neat.nn.FeedForwardNetwork.create(winner, config)
+winner_net = neat.nn.FeedForwardNetworkFPGA.create(winner, config)
+#winner_net = neat.nn.FeedForwardNetwork.create(winner, config)
 #winner_net.my_create_net_layer(winner, config)
 sim = CartPole()
 
