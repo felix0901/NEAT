@@ -1,0 +1,898 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d874a7bf-8d7e-4218-ae47-854ac3735f5e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/examples/xor/evolve-feedforwardFPGA.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neat/my_sys_mlp_fun_all_v1.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neat/nn/feed_forward_fpga.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/openai-lander/evolve.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/openai-lander/evolve.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/single-pole-balancing/config-feedforward" beforeDir="false" afterPath="$PROJECT_DIR$/examples/single-pole-balancing/config-feedforward" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/single-pole-balancing/evolve-feedforward.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/single-pole-balancing/evolve-feedforward.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/single-pole-balancing/movie.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/single-pole-balancing/movie.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/single-pole-balancing/test-feedforward.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/single-pole-balancing/test-feedforward.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/xor/config-feedforward" beforeDir="false" afterPath="$PROJECT_DIR$/examples/xor/config-feedforward" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/xor/evolve-feedforward.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/xor/evolve-feedforward.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat/activations.py" beforeDir="false" afterPath="$PROJECT_DIR$/neat/activations.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat/my_sys_mlp_fun_v2.py" beforeDir="false" afterPath="$PROJECT_DIR$/neat/my_sys_mlp_fun_v2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat/nn/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/neat/nn/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat/nn/feed_forward.py" beforeDir="false" afterPath="$PROJECT_DIR$/neat/nn/feed_forward.py" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/neat_python$my_read_all_variable.coverage" NAME="my_read_all_variable Coverage Results" MODIFIED="1549525403096" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/xor" />
+    <SUITE FILE_PATH="coverage/neat_python$evolve__1_.coverage" NAME="evolve (1) Coverage Results" MODIFIED="1549637277083" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/circuits" />
+    <SUITE FILE_PATH="coverage/neat_python$evolve_feedforwardFPGA.coverage" NAME="evolve-feedforwardFPGA Coverage Results" MODIFIED="1553179598624" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/xor" />
+    <SUITE FILE_PATH="coverage/neat_python$evolve.coverage" NAME="evolve Coverage Results" MODIFIED="1549099817943" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/memory-variable" />
+    <SUITE FILE_PATH="coverage/neat_python$feed_forward_fpga.coverage" NAME="feed_forward_fpga Coverage Results" MODIFIED="1553179404366" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/neat/nn" />
+    <SUITE FILE_PATH="coverage/neat_python$evolve__2_.coverage" NAME="evolve (2) Coverage Results" MODIFIED="1551539082071" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/openai-lander" />
+    <SUITE FILE_PATH="coverage/neat_python$evolve_feedforward.coverage" NAME="evolve-feedforward Coverage Results" MODIFIED="1553179624416" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/xor" />
+    <SUITE FILE_PATH="coverage/neat_python$test_feedforward.coverage" NAME="test-feedforward Coverage Results" MODIFIED="1553181560502" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/single-pole-balancing" />
+    <SUITE FILE_PATH="coverage/neat_python$evolve_feedforward__1_.coverage" NAME="evolve-feedforward (1) Coverage Results" MODIFIED="1553182209589" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/single-pole-balancing" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="1727146748">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="9" />
+          <entry key="project.open.time.12" value="1" />
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.3" value="1" />
+          <entry key="project.open.time.30" value="1" />
+          <entry key="project.open.time.4" value="1" />
+          <entry key="project.open.time.5" value="2" />
+          <entry key="project.open.time.6" value="1" />
+          <entry key="project.open.time.7" value="1" />
+          <entry key="project.open.time.8" value="1" />
+          <entry key="project.open.time.9" value="1" />
+          <entry key="project.opened" value="11" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="cc" value="3" />
+          <entry key="config" value="2" />
+          <entry key="config-feedforward" value="5" />
+          <entry key="gv" value="15" />
+          <entry key="md" value="6" />
+          <entry key="pstat" value="9" />
+          <entry key="py" value="86" />
+          <entry key="sh" value="5" />
+          <entry key="svg" value="28" />
+          <entry key="txt" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="C++" value="3" />
+          <entry key="Markdown" value="6" />
+          <entry key="PLAIN_TEXT" value="29" />
+          <entry key="Profiler Session" value="9" />
+          <entry key="Python" value="86" />
+          <entry key="SVG" value="28" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="Python Console" value="208" />
+          <entry key="cc" value="181" />
+          <entry key="config-feedforward" value="16" />
+          <entry key="py" value="5815" />
+          <entry key="sh" value="19" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="C++" value="181" />
+          <entry key="PLAIN_TEXT" value="35" />
+          <entry key="Python" value="6023" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/examples/xor/evolve-feedforwardFPGA.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="549">
+              <caret line="73" column="46" selection-start-line="73" selection-start-column="46" selection-end-line="73" selection-end-column="46" />
+              <folding>
+                <element signature="e#83#120#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/examples/single-pole-balancing/test-feedforward.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="28" column="28" lean-forward="true" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/examples/single-pole-balancing/movie.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/neat/nn/feed_forward_fpga.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="502">
+              <caret line="77" selection-start-line="77" selection-end-line="77" />
+              <folding>
+                <element signature="e#0#43#0" expanded="true" />
+                <marker date="1553182070304" expanded="true" signature="569:3758" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/examples/single-pole-balancing/config-feedforward">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="339">
+              <caret line="23" column="30" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/examples/single-pole-balancing/evolve-feedforward.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="570">
+              <caret line="38" column="13" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
+              <folding>
+                <element signature="e#79#116#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/neat/activations.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="24" selection-start-line="24" selection-end-line="24" />
+              <folding>
+                <element signature="e#110#141#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/neat/nn/feed_forward.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="62" selection-start-line="62" selection-end-line="62" />
+              <folding>
+                <element signature="e#0#43#0" expanded="true" />
+                <marker date="1553095290764" expanded="true" signature="669:674" ph="..." />
+                <marker date="1553095290764" expanded="true" signature="704:1505" ph="..." />
+                <marker date="1553095290764" expanded="true" signature="1532:1541" ph="..." />
+                <marker date="1553095290764" expanded="true" signature="3520:3526" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>eval_genomes</find>
+      <find>15</find>
+      <find>write</find>
+      <find>duration_seconds</find>
+      <find>duration</find>
+      <find>evaluate_genomes</find>
+      <find>simulate</find>
+      <find>ec</find>
+      <find>layerWeightMatrices</find>
+      <find>my_sys_mlp_fun</find>
+      <find>serial_in</find>
+      <find>golden</find>
+      <find>ceil</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/neat/genome.py" />
+        <option value="$PROJECT_DIR$/examples/memory-variable/evolve.py" />
+        <option value="$PROJECT_DIR$/examples/xor/my_read_all_variable.py" />
+        <option value="$PROJECT_DIR$/../../ece/run_3_lab3.sh" />
+        <option value="$PROJECT_DIR$/../../ece/src/mem/ruby/network/garnet2.0/OutputUnit.cc" />
+        <option value="$PROJECT_DIR$/../../ece/ run_4_lab3.sh" />
+        <option value="$PROJECT_DIR$/examples/openai-lander/evolve.py" />
+        <option value="$PROJECT_DIR$/neat/my_sys_mlp_fun_v2.py" />
+        <option value="$PROJECT_DIR$/neat/my_sys_mlp_fun_all_v1.py" />
+        <option value="$PROJECT_DIR$/neat/graphs.py" />
+        <option value="$PROJECT_DIR$/neat/nn/__init__.py" />
+        <option value="$PROJECT_DIR$/neat/nn/feed_forward.py" />
+        <option value="$PROJECT_DIR$/examples/xor/config-feedforward" />
+        <option value="$PROJECT_DIR$/neat/activations.py" />
+        <option value="$PROJECT_DIR$/examples/xor/evolve-feedforward.py" />
+        <option value="$PROJECT_DIR$/examples/single-pole-balancing/config-feedforward" />
+        <option value="$PROJECT_DIR$/examples/xor/evolve-feedforwardFPGA.py" />
+        <option value="$PROJECT_DIR$/examples/single-pole-balancing/test-feedforward.py" />
+        <option value="$PROJECT_DIR$/examples/single-pole-balancing/movie.py" />
+        <option value="$PROJECT_DIR$/examples/single-pole-balancing/evolve-feedforward.py" />
+        <option value="$PROJECT_DIR$/neat/nn/feed_forward_fpga.py" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="1440" />
+    <option name="y" value="-455" />
+    <option name="width" value="2560" />
+    <option name="height" value="1363" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State />
+          <State>
+            <id>Python</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>PyCompatibilityInspection</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="neat-python" type="b2602c69:ProjectViewProjectNode" />
+              <item name="neat-python" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="neat-python" type="b2602c69:ProjectViewProjectNode" />
+              <item name="neat-python" type="462c0819:PsiDirectoryNode" />
+              <item name="examples" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="neat-python" type="b2602c69:ProjectViewProjectNode" />
+              <item name="neat-python" type="462c0819:PsiDirectoryNode" />
+              <item name="examples" type="462c0819:PsiDirectoryNode" />
+              <item name="single-pole-balancing" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/../neat_anand/neat-python/neat/nn/feed_forward.py" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/examples/xor" />
+      <recent name="$PROJECT_DIR$/neat/nn" />
+      <recent name="$PROJECT_DIR$/neat" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.evolve-feedforward (1)">
+    <configuration name="evolve-feedforward (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="neat-python" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/examples/single-pole-balancing" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/examples/single-pole-balancing/evolve-feedforward.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="evolve-feedforward" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="neat-python" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/examples/xor" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/examples/xor/evolve-feedforward.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="evolve-feedforwardFPGA" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="neat-python" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/examples/xor" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/examples/xor/evolve-feedforwardFPGA.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="feed_forward_fpga" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="neat-python" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neat/nn" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/neat/nn/feed_forward_fpga.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test-feedforward" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="neat-python" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/examples/single-pole-balancing" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/examples/single-pole-balancing/test-feedforward.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.evolve-feedforward" />
+      <item itemvalue="Python.evolve-feedforward (1)" />
+      <item itemvalue="Python.evolve-feedforwardFPGA" />
+      <item itemvalue="Python.feed_forward_fpga" />
+      <item itemvalue="Python.test-feedforward" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.evolve-feedforward (1)" />
+        <item itemvalue="Python.test-feedforward" />
+        <item itemvalue="Python.evolve-feedforward" />
+        <item itemvalue="Python.evolve-feedforwardFPGA" />
+        <item itemvalue="Python.feed_forward_fpga" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d874a7bf-8d7e-4218-ae47-854ac3735f5e" name="Default Changelist" comment="" />
+      <created>1549035890324</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1549035890324</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="1440" y="-455" width="2560" height="1363" extended-state="0" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22557585" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Concurrent Activities Diagram" order="0" weight="0.32930845" />
+      <window_info anchor="bottom" id="Message" order="1" />
+      <window_info anchor="bottom" id="Find" order="2" weight="0.123524785" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.1754524" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.3194335" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="7" />
+      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="12" weight="0.22108576" />
+      <window_info anchor="bottom" id="Python Console" order="13" weight="0.21243116" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" visible="true" weight="0.08498809" />
+      <window_info anchor="right" id="Database" order="4" weight="0.32962668" />
+      <window_info anchor="right" id="Coverage" order="5" side_tool="true" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/examples/xor/evolve-feedforward.py</url>
+          <line>4</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/examples/xor/evolve-feedforward.py</url>
+          <line>75</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/neat/my_sys_mlp_fun_v2.py</url>
+          <line>133</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/neat/my_sys_mlp_fun_v2.py</url>
+          <line>123</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/neat/my_sys_mlp_fun_v2.py</url>
+          <line>109</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/neat/nn/feed_forward.py</url>
+          <line>23</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/neat/nn/feed_forward.py</url>
+          <line>31</line>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/examples/single-pole-balancing/evolve-feedforward.py</url>
+          <line>86</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/examples/single-pole-balancing/movie.py</url>
+          <line>6</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+      </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$USER_HOME$/Dropbox/GT/1_sem/course/APT6122/p3/p3_mpi/main.cc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-705" />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Dropbox/GT/1_sem/research/vivado/pythonfile/combine_v2_timing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3750">
+          <caret line="258" selection-start-line="258" selection-end-line="259" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/xor/evolve-feedforward-parallel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="900">
+          <caret line="68" column="17" selection-start-line="68" selection-start-column="17" selection-end-line="68" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neat/reproduction.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="52" column="17" selection-start-line="52" selection-start-column="17" selection-end-line="52" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/circuits/evolve.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5805">
+          <caret line="403" column="19" selection-start-line="403" selection-start-column="19" selection-end-line="403" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neat/parallel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="36" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/single-pole-balancing/Digraph.gv.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/single-pole-balancing/Digraph.gv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../ece/src/mem/ruby/network/garnet2.0/RoutingUnit.cc" />
+    <entry file="file://$PROJECT_DIR$/../../ece/run_3_lab3.sh" />
+    <entry file="file://$PROJECT_DIR$/../../ece/network_stats.txt" />
+    <entry file="file://$PROJECT_DIR$/../../ece/my_res/res_turn_model_adaptive_bit_complement1_all.txt" />
+    <entry file="file://$PROJECT_DIR$/../../ece/ run_4_lab3.sh" />
+    <entry file="file://$PROJECT_DIR$/../../ece/src/mem/ruby/network/garnet2.0/OutputUnit.cc" />
+    <entry file="file://$USER_HOME$/Dropbox/GT/2_sem/course/ICN/lab/lab2/run_lab2_2.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="11" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neat/nn/recurrent.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neat/reporting.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1919" />
+      </provider>
+    </entry>
+    <entry file="file:///Library/anaconda3/envs/pytorch/lib/python3.6/site-packages/matplotlib/figure.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="444" selection-start-line="444" selection-end-line="444" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Dropbox/GT/2_sem/course/MLHW/lab1/Lab1_shared/cnn_keras.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="91" column="6" lean-forward="true" selection-start-line="91" selection-start-column="6" selection-end-line="92" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/single-pole-balancing/winner-feedforward-enabled.gv.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/single-pole-balancing/winner-feedforward-enabled-pruned.gv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/single-pole-balancing/winner-feedforward-enabled.gv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/single-pole-balancing/cart_pole.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/openai-lander/evolve.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3180">
+          <caret line="230" column="44" selection-start-line="230" selection-start-column="44" selection-end-line="230" selection-end-column="44" />
+          <folding>
+            <element signature="e#222#259#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="360">
+            <caret line="24" column="66" selection-start-line="24" selection-start-column="66" selection-end-line="24" selection-end-column="66" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/anaconda3/envs/pytorch/lib/python3.6/site-packages/moviepy/video/VideoClip.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15315">
+          <caret line="1041" column="50" selection-start-line="1041" selection-start-column="42" selection-end-line="1041" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/openai-lander/fitness.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/openai-lander/scores.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/xor/Digraph.gv.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neat/graphs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="958">
+          <caret line="89" selection-start-line="89" selection-end-line="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/single-pole-balancing/evolve-ctrnn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-77">
+          <caret line="31" column="41" lean-forward="true" selection-start-line="31" selection-start-column="41" selection-end-line="31" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/xor/Digraph.gv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neat/population.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="88" selection-start-line="88" selection-end-line="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neat/my_sys_mlp_fun_all_v1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="102" column="22" selection-start-line="102" selection-start-column="16" selection-end-line="102" selection-end-column="22" />
+          <folding>
+            <element signature="e#19#32#0" expanded="true" />
+            <marker date="1553088506539" expanded="true" signature="273:870" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/xor/evolve-feedforward.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="960">
+          <caret line="64" selection-start-line="64" selection-end-line="64" />
+          <folding>
+            <element signature="e#83#120#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/xor/config-feedforward">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="30" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/anaconda3/envs/pytorch/lib/python3.6/codecs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4800">
+          <caret line="320" selection-start-line="320" selection-end-line="320" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neat/nn/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="60" selection-start-line="1" selection-start-column="38" selection-end-line="1" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neat/my_sys_mlp_fun_v2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2085">
+          <caret line="139" selection-start-line="139" selection-end-line="143" selection-end-column="76" />
+          <folding>
+            <element signature="e#19#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neat/activations.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+          <folding>
+            <element signature="e#110#141#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/anaconda3/envs/pytorch/lib/python3.6/site-packages/moviepy/Clip.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="93" selection-start-line="93" selection-end-line="93" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/single-pole-balancing/winner-feedforward.gv.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/single-pole-balancing/winner-feedforward.gv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neat/nn/feed_forward.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="62" selection-start-line="62" selection-end-line="62" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+            <marker date="1553095290764" expanded="true" signature="669:674" ph="..." />
+            <marker date="1553095290764" expanded="true" signature="704:1505" ph="..." />
+            <marker date="1553095290764" expanded="true" signature="1532:1541" ph="..." />
+            <marker date="1553095290764" expanded="true" signature="3520:3526" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/single-pole-balancing/config-feedforward">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="339">
+          <caret line="23" column="30" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neat_code_backup/neatcode_backup_20190317/nn/feed_forward_fpga.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="114" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="114" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/single-pole-balancing/movie.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/single-pole-balancing/test-feedforward.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="28" column="28" lean-forward="true" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/xor/evolve-feedforwardFPGA.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="549">
+          <caret line="73" column="46" selection-start-line="73" selection-start-column="46" selection-end-line="73" selection-end-column="46" />
+          <folding>
+            <element signature="e#83#120#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/single-pole-balancing/evolve-feedforward.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="38" column="13" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
+          <folding>
+            <element signature="e#79#116#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neat/nn/feed_forward_fpga.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="502">
+          <caret line="77" selection-start-line="77" selection-end-line="77" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+            <marker date="1553182070304" expanded="true" signature="569:3758" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

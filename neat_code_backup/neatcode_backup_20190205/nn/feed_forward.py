@@ -17,13 +17,9 @@ class FeedForwardNetwork(object):
         self.responseMap = []
         self.layers = None
         self.connections = None
-
-
     def my_activate(self, inputs):
-
         for k, v in zip(self.input_nodes, inputs):
             self.values[k] = v
-
         for (inputnodeV, WeightsV, outputnodeV, act_funcV, biasV, responseV) in \
                 zip(self.inputVectorKeyMap, self.layerWeightMatrices, self.outputVectorKeyMap,
                     self.act_funcMap, self.biasMap, self.responseMap):
@@ -60,6 +56,7 @@ class FeedForwardNetwork(object):
 
         # Gather expressed connections.
         connections = [cg.key for cg in itervalues(genome.connections) if cg.enabled]
+
         layers = feed_forward_layers(config.genome_config.input_keys, config.genome_config.output_keys, connections)
         node_evals = []
         for layer in layers:
@@ -80,7 +77,6 @@ class FeedForwardNetwork(object):
                 node_evals.append((node, activation_function, aggregation_function, ng.bias, ng.response, inputs))
 
         return FeedForwardNetwork(config.genome_config.input_keys, config.genome_config.output_keys, node_evals)
-
 
     def my_create_net_layer(self, genome, config):
         self.connections = [cg.key for cg in itervalues(genome.connections) if cg.enabled]

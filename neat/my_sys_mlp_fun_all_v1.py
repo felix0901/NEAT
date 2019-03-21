@@ -8,7 +8,21 @@ import os, os.path
 from  math import ceil
 import scipy.io
 
-def my_sys_mlp_fun(output_from_sys_mlp, inputs_from_neat, Weights_from_neat):
+def my_sys_mlp_fun_all(inputs, inputVectorKeyMap, layerWeightMatrices, outputVectorKeyMap, act_funcMap, biasMap, responseMap, values):
+    command_layer = len(inputVectorKeyMap)
+    command_init_total_node = len(values)
+    command_init_in_nodes = len(inputs)
+    serial_in = []
+
+    ####To send ITER_IN_VIVADO through uart===
+    command_s = [command_layer, command_init_total_node, command_init_in_nodes]
+    for i in range(len(command_s)):
+        serial_in.append(int(command_s[i]))
+    for(act_funcV, biasV, responseV)
+    for (inputnodeV, WeightsV, outputnodeV, act_funcV, biasV, responseV) in \
+            zip(inputVectorKeyMap, layerWeightMatrices, outputVectorKeyMap,
+                act_funcMap, biasMap, responseMap):
+
     cols = 8
     Yo, Xo = 1, 1
 
@@ -141,4 +155,4 @@ if __name__ == '__main__':
     inputs_from_neat = [1, 2]
     Weights_from_neat = [[2, 3]]
     output_from_sys_mlp = []
-    my_sys_mlp_fun(output_from_sys_mlp, inputs_from_neat, Weights_from_neat)
+    my_sys_mlp_fun_all()

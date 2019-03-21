@@ -26,12 +26,12 @@ xor_outputs = [ (1.0,) , (0.0,),     (1.0,)     ,     (0.0,)]
 def eval_genomes(genomes, config):
     for genome_id, genome in genomes:
         genome.fitness = 4.0
-        net = neat.nn.FeedForwardNetwork.create(genome, config)
-        #net_fpga = neat.nn.FeedForwardNetworkFPGA.create(genome, config)
+        #net = neat.nn.FeedForwardNetwork.create(genome, config)
+        net_fpga = neat.nn.FeedForwardNetworkFPGA.create(genome, config)
         #net.my_create_net_layer(genome, config)
         for xi, xo in zip(xor_inputs, xor_outputs):
-            #output = net_fpga.activate_cpu(xi)
-            output = net.activate(xi)
+            output = net_fpga.activate_cpu(xi)
+            #output = net.activate(xi)
             #output = net.my_activate(xi)
             genome.fitness -= (output[0] - xo[0]) ** 2
 
@@ -39,43 +39,50 @@ def eval_genomes(genomes, config):
 
 def run(config_file):
     # Load configuration.
-    # config = neat.Config(neat.DefaultGenome, neat.DefaultReproduction,
-    #                      neat.DefaultSpeciesSet, neat.DefaultStagnation,
-    #                      config_file)
-    #
-    # # Create the population, which is the top-level object for a NEAT run.
-    # p = neat.Population(config)
-    #
-    # # Add a stdout reporter to show progress in the terminal.
-    # p.add_reporter(neat.StdOutReporter(True))
-    # stats = neat.StatisticsReporter()
-    # p.add_reporter(stats)
-    # p.add_reporter(neat.Checkpointer(5))
-    #
-    # # Run for up to 300 generations.
-    # winner = p.run(eval_genomes, 300)
-    #
-    # # Display the winning genome.
-    # print('\nBest genome:\n{!s}'.format(winner))
-    #
-    # # Show output of the most fit genome against training data.
-    # print('\nOutput:')
-    # with open("my_network.data", 'wb') as fd:
-    #     pickle.dump((winner, config, xor_inputs, xor_outputs), fd)
+    config = neat.Config(neat.DefaultGenome, neat.DefaultReproduction,
+                         neat.DefaultSpeciesSet, neat.DefaultStagnation,
+                         config_file)
 
+    # Create the population, which is the top-level object for a NEAT run.
+    p = neat.Population(config)
 
+    # Add a stdout reporter to show progress in the terminal.
+    p.add_reporter(neat.StdOutReporter(True))
+    stats = neat.StatisticsReporter()
+    p.add_reporter(stats)
+    p.add_reporter(neat.Checkpointer(5))
+
+    # Run for up to 300 generations.
+    winner = p.run(eval_genomes, 300)
+
+    # Display the winning genome.
+    print('\nBest genome:\n{!s}'.format(winner))
+
+    # Show output of the most fit genome against training data.
+    print('\nOutput:')
+    with open("my_network.data", 'wb') as fd:
+        pickle.dump((winner, config, stats, xor_inputs, xor_outputs), fd)
+    # fd = open("my_network.data", 'rb')
+    # winner, config, stats, xor_inputs, xor_outputs = pickle.load(fd)
+    fd.close()
     winner_net = neat.nn.FeedForwardNetwork.create(winner, config)
-    #net_fpga = neat.nn.FeedForwardNetworkFPGA.create(winner, config)
+    net_fpga = neat.nn.FeedForwardNetworkFPGA.create(winner, config)
     #winner_net.my_create_net_layer(winner, config)
     for xi, xo in zip(xor_inputs, xor_outputs):
         time_s = time.time()
-        #output = net_fpga.activate_cpu(xi)
-        output = winner_net.activate(xi)
+        output1 = net_fpga.activate_cpu(xi)
         time_e = 1000 * (time.time() - time_s)
+        print("input {!r}, expected output1 {!r}, got {!r}".format(xi, xo, output1))
         print("One inference time is ", time_e, "msec")
+        time_s = time.time()
+        output2 = winner_net.activate(xi)
+        time_e = 1000 * (time.time() - time_s)
+        print("input {!r}, expected output2 {!r}, got {!r}".format(xi, xo, output2))
+        print("One inference time is ", time_e, "msec")
+        print(" ")
 
         #output = winner_net.my_activate(xi)
-        print("input {!r}, expected output {!r}, got {!r}".format(xi, xo, output))
+
 
     node_names = {-1:'A', -2: 'B', 0:'A XOR B'}
     visualize.draw_net(config, winner, True, node_names=node_names)

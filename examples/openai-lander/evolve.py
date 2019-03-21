@@ -5,7 +5,7 @@
 from __future__ import print_function
 ## matplotlib error fixing==
 import matplotlib
-matplotlib.use('Agg')
+#matplotlib.use('Agg')
 ##==========================
 import gym
 import gym.wrappers

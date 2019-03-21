@@ -8,7 +8,7 @@ import sys
 sys.path.insert(0, "/Users/chuchu/Documents/code/neat-python")
 ##==========================================================
 import matplotlib
-matplotlib.use("Agg")
+#matplotlib.use("Agg")
 import os
 import pickle
 
@@ -23,8 +23,9 @@ simulation_seconds = 60.0
 
 # Use the NN network phenotype and the discrete actuator force function.
 def eval_genome(genome, config):
-    net = neat.nn.FeedForwardNetwork.create(genome, config)
-    net.my_create_net_layer(genome, config)
+    #net = neat.nn.FeedForwardNetwork.create(genome, config)
+    net_fpga =  neat.nn.FeedForwardNetworkFPGA.create(genome, config)
+    #net.my_create_net_layer(genome, config)
     fitnesses = []
 
     for runs in range(runs_per_net):
@@ -34,8 +35,9 @@ def eval_genome(genome, config):
         fitness = 0.0
         while sim.t < simulation_seconds:
             inputs = sim.get_scaled_state()
+            action = net_fpga.activate_cpu(inputs)
             #action = net.activate(inputs)
-            action = net.my_activate(inputs)
+            #action = net.my_activate(inputs)
             # Apply action to the simulated cart-pole
             force = cart_pole.discrete_actuator_force(action)
             sim.step(force)
@@ -60,8 +62,7 @@ def eval_genomes(genomes, config):
 
 
 def run():
-    # Load the config file, which is assumed to live in
-    # the same directory as this script.
+
     local_dir = os.path.dirname(__file__)
     config_path = os.path.join(local_dir, 'config-feedforward')
     config = neat.Config(neat.DefaultGenome, neat.DefaultReproduction,
@@ -78,8 +79,10 @@ def run():
     winner = pop.run(eval_genomes, 50)
 
     # Save the winner.
-    with open('winner-feedforward', 'wb') as f:
-        pickle.dump(winner, f)
+    with open("my_network.data", 'wb') as fd:
+        pickle.dump((winner, config, stats), fd)
+    # with open("my_network.data", 'rb') as fd:
+    #     winner, config, stats = pickle.load(fd)
 
     print(winner)
 

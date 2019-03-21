@@ -15,7 +15,9 @@ def make_movie(net, force_function, duration_seconds, output_filename):
     def make_frame(t):
         inputs = sim.get_scaled_state()
         if hasattr(net, 'activate'):
+            #action = net.activate_cpu(inputs)
             action = net.activate(inputs)
+            #action = net.my_activate(inputs)
         else:
             action = net.advance(inputs, sim.time_step, sim.time_step)
 

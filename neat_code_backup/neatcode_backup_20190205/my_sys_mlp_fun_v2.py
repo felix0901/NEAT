@@ -123,15 +123,18 @@ def my_sys_mlp_fun(output_from_sys_mlp, inputs_from_neat, Weights_from_neat):
         try:
             temp = int(data)
         except:
-            print("My error: data =", data)
-            continue
+            temp = 0
         result_serial.append(temp)
 #===========to print out the difference=========
     # diff = [1 for i in range(len(golden)) if result_serial[i] != golden[i]]
     # diff_num = len(diff)
-    # print("The difference b/w golden and fpga is: ", diff_num)dddddadasddssddss
+    # print("The difference b/w golden and fpga is: ", diff_num)
 #======================================
     output_from_sys_mlp.append([r/(quantize_val**2) for r in result_serial])
+
+
+
+
 
 
 
