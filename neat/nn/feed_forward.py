@@ -51,8 +51,8 @@ class FeedForwardNetwork(object):
 
             s = agg_func(node_inputs)
             self.values[node] = act_func(bias + response * s)
-
-        return [self.values[i] for i in self.output_nodes]
+        ret = [self.values[i] for i in self.output_nodes]
+        return ret
 
     @staticmethod
     def create(genome, config):

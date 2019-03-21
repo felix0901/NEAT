@@ -12,7 +12,7 @@ class FeedForwardNetworkFPGA(object):
         self.out_num_nodes = out_num_nodes
         self.quantize = quantize
     def activate_cpu(self, inputs):
-        #time_s1 = time.time()
+        time_s1 = time.time()
         if self.in_num_nodes != len(inputs):
             raise RuntimeError("Expected {0:n} inputs, got {1:n}".format(len(self.input_nodes), len(inputs)))
         quantize_1_time = 2**self.quantize
@@ -46,10 +46,10 @@ class FeedForwardNetworkFPGA(object):
         base_addr += command_init_total_node
         bias_s = serial_in[base_addr:base_addr+command_init_total_node]
         base_addr += command_init_total_node
-        V_s = np.zeros((command_init_total_node, 1))
+        V_s = np.zeros((command_init_total_node, 1)).astype(int)
         V_s[0:command_init_in_nodes] = serial_in[base_addr:base_addr+command_init_in_nodes].reshape((-1,1))
         base_addr += command_init_in_nodes
-        #time_e = 0
+        time_e = 0
         for layer_idx in range(command_layer):
             out_total, in_total = out_total_s[layer_idx], in_total_s[layer_idx]
             o_id = serial_in[base_addr:base_addr+out_total]
@@ -62,22 +62,22 @@ class FeedForwardNetworkFPGA(object):
             I = V_s[i_id]
             resp = resp_s[o_id].reshape(out_total, -1)
             bias = bias_s[o_id].reshape(out_total, -1)
-            #time_s = time.time()
+            time_s = time.time()
             O = np.matmul(W, I)
             V = (resp * O + bias)
             #====No activation===
             #V_s[o_id] = V
             #==================
             #====relu====
-            V_s[o_id] = np.int_(np.maximum(np.minimum(V, relu_max_par), relu_min_par) // quantize_2_time)
-            #time_e += time.time() - time_s
+            V_s[o_id] = np.maximum(np.minimum(V, relu_max_par), relu_min_par) // quantize_2_time
+            time_e += time.time() - time_s
             #===le_relu======
             #V_s[o_id] = np.int_(np.maximum(np.minimum(V, relu_max_par), V * le_relu_par) / quantize_2_time)
         ret = [float(v/quantize_1_time) for v in V_s[o_id]]
-        #time_e = 1000 * (time_e)
-        #time_all = 1000 * (time.time() - time_s1)
-        #print("Calculation time ", time_e, "msec")
-        #print("Data processing time ", time_all-time_e, "msec")
+        time_e = 1000 * (time_e)
+        time_all = 1000 * (time.time() - time_s1)
+        print("Calculation time ", time_e, "msec")
+        print("Data processing time ", time_all-time_e, "msec")
         return ret
 
 

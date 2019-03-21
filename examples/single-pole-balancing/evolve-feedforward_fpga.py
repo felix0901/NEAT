@@ -23,8 +23,8 @@ simulation_seconds = 60.0
 
 # Use the NN network phenotype and the discrete actuator force function.
 def eval_genome(genome, config):
-    net = neat.nn.FeedForwardNetwork.create(genome, config)
-    #net_fpga =  neat.nn.FeedForwardNetworkFPGA.create(genome, config)
+    #net = neat.nn.FeedForwardNetwork.create(genome, config)
+    net_fpga =  neat.nn.FeedForwardNetworkFPGA.create(genome, config)
     #net.my_create_net_layer(genome, config)
     fitnesses = []
 
@@ -35,8 +35,8 @@ def eval_genome(genome, config):
         fitness = 0.0
         while sim.t < simulation_seconds:
             inputs = sim.get_scaled_state()
-            #action = net_fpga.activate_cpu(inputs)
-            action = net.activate(inputs)
+            action = net_fpga.activate_cpu(inputs)
+            #action = net.activate(inputs)
             #action = net.my_activate(inputs)
             # Apply action to the simulated cart-pole
             force = cart_pole.discrete_actuator_force(action)
