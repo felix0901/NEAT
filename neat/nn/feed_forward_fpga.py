@@ -32,10 +32,10 @@ class FeedForwardNetworkFPGA(object):
 
         #====NON-LINEAR=====
             #===relu====aa
-        relu_max_par = 16 * quantize_3_time
-        relu_min_par = 0
+        #relu_max_par = 16 * quantize_3_time
+        #relu_min_par = 0
             #===le_relu======
-        le_relu_par = (2 / quantize_1_time)
+        #le_relu_par = (2 / quantize_1_time)
         #=======================
         for i in range(command_layer):
             in_total_s[i] =  serial_in[base_addr]
@@ -70,7 +70,7 @@ class FeedForwardNetworkFPGA(object):
             #==================
             #====relu====
             #V_s[o_id] = np.maximum(np.minimum(V, relu_max_par), relu_min_par) / quantize_2_time
-            V_s[o_id] = np.maximum(V, relu_min_par) / quantize_2_time
+            V_s[o_id] = np.maximum(V, 0) / quantize_2_time
             #time_e += time.time() - time_s
             #===le_relu======
             #V_s[o_id] = np.int_(np.maximum(np.minimum(V, relu_max_par), V * le_relu_par) / quantize_2_time)

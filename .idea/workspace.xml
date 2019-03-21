@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d874a7bf-8d7e-4218-ae47-854ac3735f5e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/examples/single-pole-balancing/evolve-feedforward_fpga.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/examples/single-pole-balancing/Digraph.gv" beforeDir="false" afterPath="$PROJECT_DIR$/examples/single-pole-balancing/Digraph.gv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/examples/single-pole-balancing/Digraph.gv.svg" beforeDir="false" afterPath="$PROJECT_DIR$/examples/single-pole-balancing/Digraph.gv.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/single-pole-balancing/evolve-feedforward.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/single-pole-balancing/evolve-feedforward.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/examples/single-pole-balancing/feedforward-fitness.svg" beforeDir="false" afterPath="$PROJECT_DIR$/examples/single-pole-balancing/feedforward-fitness.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/single-pole-balancing/feedforward-movie.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/examples/single-pole-balancing/feedforward-movie.mp4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/examples/single-pole-balancing/feedforward-speciation.svg" beforeDir="false" afterPath="$PROJECT_DIR$/examples/single-pole-balancing/feedforward-speciation.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/examples/single-pole-balancing/my_network.data" beforeDir="false" afterPath="$PROJECT_DIR$/examples/single-pole-balancing/my_network.data" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/examples/single-pole-balancing/winner-feedforward-enabled-pruned.gv" beforeDir="false" afterPath="$PROJECT_DIR$/examples/single-pole-balancing/winner-feedforward-enabled-pruned.gv" afterDir="false" />
@@ -17,14 +13,7 @@
       <change beforePath="$PROJECT_DIR$/examples/single-pole-balancing/winner-feedforward-enabled.gv.svg" beforeDir="false" afterPath="$PROJECT_DIR$/examples/single-pole-balancing/winner-feedforward-enabled.gv.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/examples/single-pole-balancing/winner-feedforward.gv" beforeDir="false" afterPath="$PROJECT_DIR$/examples/single-pole-balancing/winner-feedforward.gv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/examples/single-pole-balancing/winner-feedforward.gv.svg" beforeDir="false" afterPath="$PROJECT_DIR$/examples/single-pole-balancing/winner-feedforward.gv.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/xor/Digraph.gv" beforeDir="false" afterPath="$PROJECT_DIR$/examples/xor/Digraph.gv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/xor/Digraph.gv.svg" beforeDir="false" afterPath="$PROJECT_DIR$/examples/xor/Digraph.gv.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/xor/avg_fitness.svg" beforeDir="false" afterPath="$PROJECT_DIR$/examples/xor/avg_fitness.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/xor/my_network.data" beforeDir="false" afterPath="$PROJECT_DIR$/examples/xor/my_network.data" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/xor/speciation.svg" beforeDir="false" afterPath="$PROJECT_DIR$/examples/xor/speciation.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neat/nn/feed_forward.py" beforeDir="false" afterPath="$PROJECT_DIR$/neat/nn/feed_forward.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/neat/nn/feed_forward_fpga.py" beforeDir="false" afterPath="$PROJECT_DIR$/neat/nn/feed_forward_fpga.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neat_code_backup/neatcode_backup_20190317/nn/feed_forward_fpga.py" beforeDir="false" afterPath="$PROJECT_DIR$/neat_code_backup/neatcode_backup_20190317/nn/feed_forward_fpga.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,7 +27,7 @@
     <SUITE FILE_PATH="coverage/neat_python$evolve_feedforwardFPGA.coverage" NAME="evolve-feedforwardFPGA Coverage Results" MODIFIED="1553187144939" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/xor" />
     <SUITE FILE_PATH="coverage/neat_python$evolve.coverage" NAME="evolve Coverage Results" MODIFIED="1549099817943" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/memory-variable" />
     <SUITE FILE_PATH="coverage/neat_python$feed_forward_fpga.coverage" NAME="feed_forward_fpga Coverage Results" MODIFIED="1553188210379" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/neat/nn" />
-    <SUITE FILE_PATH="coverage/neat_python$evolve_feedforward_fpga.coverage" NAME="evolve-feedforward_fpga Coverage Results" MODIFIED="1553188776931" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/single-pole-balancing" />
+    <SUITE FILE_PATH="coverage/neat_python$evolve_feedforward_fpga.coverage" NAME="evolve-feedforward_fpga Coverage Results" MODIFIED="1553189131430" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/single-pole-balancing" />
     <SUITE FILE_PATH="coverage/neat_python$evolve__2_.coverage" NAME="evolve (2) Coverage Results" MODIFIED="1551539082071" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/openai-lander" />
     <SUITE FILE_PATH="coverage/neat_python$evolve_feedforward.coverage" NAME="evolve-feedforward Coverage Results" MODIFIED="1553179624416" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/xor" />
     <SUITE FILE_PATH="coverage/neat_python$evolve_feedforward__1_.coverage" NAME="evolve-feedforward (1) Coverage Results" MODIFIED="1553188100785" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/single-pole-balancing" />
@@ -105,7 +94,7 @@
           <entry key="Python Console" value="208" />
           <entry key="cc" value="181" />
           <entry key="config-feedforward" value="41" />
-          <entry key="py" value="5871" />
+          <entry key="py" value="5876" />
           <entry key="sh" value="19" />
         </counts>
       </usages-collector>
@@ -113,7 +102,7 @@
         <counts>
           <entry key="C++" value="181" />
           <entry key="PLAIN_TEXT" value="60" />
-          <entry key="Python" value="6079" />
+          <entry key="Python" value="6084" />
         </counts>
       </usages-collector>
     </session>
@@ -144,11 +133,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/neat/nn/feed_forward_fpga.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="109">
-              <caret line="34" column="8" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="8" />
-              <folding>
-                <element signature="e#0#43#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="45">
+              <caret line="3" column="13" lean-forward="true" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -543,7 +529,7 @@
       <window_info anchor="bottom" id="Concurrent Activities Diagram" order="0" weight="0.32930845" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.123524785" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.3154996" />
+      <window_info anchor="bottom" id="Run" order="3" visible="true" weight="0.25177026" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.3194335" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -557,7 +543,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" visible="true" weight="0.08498809" />
+      <window_info active="true" anchor="right" id="SciView" order="3" visible="true" weight="0.08498809" />
       <window_info anchor="right" id="Database" order="4" weight="0.32962668" />
       <window_info anchor="right" id="Coverage" order="5" side_tool="true" />
     </layout>
@@ -946,11 +932,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/neat/nn/feed_forward_fpga.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="34" column="8" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="45">
+          <caret line="3" column="13" lean-forward="true" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
         </state>
       </provider>
     </entry>
