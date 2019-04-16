@@ -69,8 +69,8 @@ def run(config_file):
     #winner_net.my_create_net_layer(winner, config)
     for xi, xo in zip(xor_inputs, xor_outputs):
         time_s = time.time()
-        #output = net_fpga.activate_cpu(xi)
-        output = winner_net.activate(xi)
+        output = net_fpga.activate_cpu(xi)
+        #output = winner_net.activate(xi)
         time_e = 1000 * (time.time() - time_s)
         print("One inference time is ", time_e, "msec")
 

@@ -19,9 +19,15 @@ class FeedForwardNetworkFPGA(object):
         quantize_2_time = 2 ** (2 * self.quantize)
         quantize_3_time = 2**(3*self.quantize)
         serial_in = np.int_(self.serial_in_pre + [int(n * quantize_1_time) for n in inputs] + self.serial_in_post)
+        fp = open("zed_serial_in.txt", "w")
+        # for i in range(len(serial_in)):
+        #     data = serial_in[i]
+        #     fp.write('{}\n'.format(data))
+        # fp.close()
+
         o_id = 0
         base_addr = 0
-        command_layer = serial_in[base_addr]
+        command_layer = serial_in[base_addr] - 1
         base_addr += 1
         command_init_total_node = serial_in[base_addr]
         base_addr += 1
@@ -70,6 +76,7 @@ class FeedForwardNetworkFPGA(object):
             #==================
             #====relu====
             #V_s[o_id] = np.maximum(np.minimum(V, relu_max_par), relu_min_par) / quantize_2_time
+            #V_s[o_id] = V
             V_s[o_id] = np.maximum(V, 0) / quantize_2_time
             #time_e += time.time() - time_s
             #===le_relu======
@@ -91,10 +98,18 @@ class FeedForwardNetworkFPGA(object):
         quantize_1_time = 2 ** self.quantize
         quantize_2_time = 2 ** (2 * self.quantize)
         quantize_3_time = 2 ** (3 * self.quantize)
-        serial_in = self.serial_in_pre + [int(n* quantize_1_time) for n in inputs] + self.serial_in_post
+        serial_in = np.int_(self.serial_in_pre + [int(n * quantize_1_time) for n in inputs] + self.serial_in_post)
+        num_of_layer = serial_in[0]
+        # if num_of_layer == 1 or self.out_num_nodes == 0:
+        #     return [0]
+        # if (serial_in[0] == 4 and serial_in[1] == 8) or (serial_in[0] == 3 and serial_in[1] == 4):
+        #     return [0]
+        # print("I: ",self.serial_in_pre)
+        # print(inputs)
+        # print("W: ", self.serial_in_post)
 
         ser = serial.Serial(
-            port='/dev/tty.usbmodem14431',
+            port='/dev/tty.usbmodem14111',
             baudrate=115200,
             parity=serial.PARITY_NONE,
             stopbits=serial.STOPBITS_ONE,
@@ -115,15 +130,17 @@ class FeedForwardNetworkFPGA(object):
             ser.write(temp.to_bytes(length=4, byteorder='big'))
 
         result_serial = []
-        for i in range(self.out_num_nodes):
+
+        for i in range(self.out_num_nodes+1):
             data = ser.readline()
             #    print("i: ",i, "data: ", bytes.decode(data))
             try:
                 temp = int(data)
             except:
-                print("My error: data =", data)
+                #print("My error: data =", data)
                 continue
             result_serial.append(float(temp/(quantize_1_time)))
+        #print(result_serial)
         return result_serial
 
     @staticmethod
@@ -148,7 +165,7 @@ class FeedForwardNetworkFPGA(object):
                     valueIDMap_fpga2neat[idx] = o_id
                     idx += 1
         total_nodes = idx
-        command_layer = len(layers)
+        command_layer = len(layers) + 1
         command_init_total_node = len(valueIDMap_neat2fpga)
         command_init_in_nodes = len(config.genome_config.input_keys)
         command_s = [command_layer, command_init_total_node, command_init_in_nodes]
@@ -161,7 +178,7 @@ class FeedForwardNetworkFPGA(object):
             bias_s[idx] = int(ng.bias * 2**(quantize + quantize + quantize))
         serial_in_pre = command_s
         serial_in_post = []
-        for layer in layers:
+        for idx,layer in enumerate(layers):
             inputVectorThisLayer = []
             i_id = []
             outputVectorThisLayer = []
@@ -186,6 +203,8 @@ class FeedForwardNetworkFPGA(object):
             for key, val in key_weight_dict.items():
                 indx_i, indx_o = key
                 weight_matrix[indx_o][indx_i] =int(val * 2**quantize)
+            # if idx ==0:
+            #     print("init_in_total: ", command_init_in_nodes, "in_first :", len(inputVectorThisLayer))
             serial_in_pre.append(len(inputVectorThisLayer))
             serial_in_pre.append(len(outputVectorThisLayer))
             serial_in_post = serial_in_post + o_id + i_id + list(np.ravel(weight_matrix))

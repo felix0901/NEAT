@@ -86,7 +86,8 @@ def feed_forward_layers(inputs, outputs, connections):
 
         layers.append(t)
         s = s.union(t)
-
+    if layers == []:
+        1+2
     return layers
 
 
