@@ -1,6 +1,6 @@
 from neat.graphs import feed_forward_layers
 from neat.six_util import itervalues
-from neat.my_sys_mlp_fun_v2 import my_sys_mlp_fun
+#from neat.my_sys_mlp_fun_v2 import my_sys_mlp_fun
 import numpy as np
 
 class FeedForwardNetwork(object):

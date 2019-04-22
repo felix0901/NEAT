@@ -1,9 +1,35 @@
 from neat.graphs import feed_forward_layers
 from neat.six_util import itervalues
 import numpy as np
-import serial
+#import serial
 import time
+from pynq import Overlay
+import pynq.lib.dma
+from pynq import MMIO
+from pynq import Xlnk
 from neat.activations import sigmoid_activation
+
+#===pynq=============================================================
+overlay = Overlay("/home/xilinx/pynq/overlays/systolic_hw/systolic_hw.bit")
+dma = overlay.axi_dma_0
+mlp_axi = overlay.mlp_systolic_0
+IP_BASE = overlay.ip_dict['mlp_systolic_0']["phys_addr"]
+#Define
+STATE = 0
+COMMAND_VALID = 4
+COMMAND_ACK = 8
+COMMAND_IN_TOTAL = 12
+COMMAND_OUT_TOTAL = 16
+COMMAND_INIT_TOTAL_NODES = 20
+COMMAND_INIT_IN_TOTAL = 24
+COMMAND_DONE = 28
+COMMAND_COMMAND_ACK = 32
+COMMAND_COMMAND_INIT_ACK = 36
+COMMAND_DONE_ACK = 40
+COMMAND_RST_N = 44
+#parameter
+COLS = 16
+xlnk = Xlnk()
 class FeedForwardNetworkFPGA(object):
     def __init__(self, serial_in_pre, serial_in_post, in_num_nodes, out_num_nodes, quantize=8):
         self.serial_in_pre = serial_in_pre
@@ -19,7 +45,6 @@ class FeedForwardNetworkFPGA(object):
         quantize_2_time = 2 ** (2 * self.quantize)
         quantize_3_time = 2**(3*self.quantize)
         serial_in = np.int_(self.serial_in_pre + [int(n * quantize_1_time) for n in inputs] + self.serial_in_post)
-        fp = open("zed_serial_in.txt", "w")
         # for i in range(len(serial_in)):
         #     data = serial_in[i]
         #     fp.write('{}\n'.format(data))
@@ -35,7 +60,6 @@ class FeedForwardNetworkFPGA(object):
         base_addr += 1
         in_total_s = [0 for i in range(command_layer)]
         out_total_s = [0 for i in range(command_layer)]
-
         #====NON-LINEAR=====
             #===relu====aa
         #relu_max_par = 16 * quantize_3_time
@@ -86,9 +110,123 @@ class FeedForwardNetworkFPGA(object):
         #time_all = 1000 * (time.time() - time_s1)
         #print("Calculation time ", time_e, "msec")
         #print("Data processing time ", time_all-time_e, "msec")
+        if command_layer == 0:
+            return inputs
         return ret
 
+    def activate_fpga(self, inputs):
+        #time_s1 = time.time()
+        mlp_axi.write(COMMAND_RST_N, 0)
+        mlp_axi.write(COMMAND_RST_N, 1)
+        if self.in_num_nodes != len(inputs):
+            raise RuntimeError("Expected {0:n} inputs, got {1:n}".format(len(self.input_nodes), len(inputs)))
+        quantize_1_time = 2**self.quantize
+        quantize_2_time = 2 ** (2 * self.quantize)
+        quantize_3_time = 2**(3*self.quantize)
+        serial_in = np.int_(self.serial_in_pre + [int(n * quantize_1_time) for n in inputs] + self.serial_in_post)
+        o_id = 0
+        base_addr = 0
+        command_layer = serial_in[base_addr] - 1
+        base_addr += 1
+        command_init_total_node = serial_in[base_addr]
+        base_addr += 1
+        command_init_in_nodes  = serial_in[base_addr]
+        base_addr += 1
+        in_total_s = [0 for i in range(command_layer)]
+        out_total_s = [0 for i in range(command_layer)]
+        if command_layer != 0:
+            #====NON-LINEAR=====
+                #===relu====aa
+            #relu_max_par = 16 * quantize_3_time
+            #relu_min_par = 0
+                #===le_relu======
+            #le_relu_par = (2 / quantize_1_time)
+            #=======================
+            for i in range(command_layer):
+                in_total_s[i] =  serial_in[base_addr]
+                base_addr += 1
+                out_total_s[i] = serial_in[base_addr]
+                base_addr += 1
 
+            mlp_axi.write(COMMAND_COMMAND_INIT_ACK, 0)
+            mlp_axi.write(COMMAND_COMMAND_ACK, 0)
+            mlp_axi.write(COMMAND_DONE_ACK, 0)
+            mlp_axi.write(COMMAND_DONE, 0)
+
+            while (mlp_axi.read(COMMAND_VALID)):
+                mlp_axi.write(COMMAND_INIT_TOTAL_NODES, int(command_init_total_node))
+                mlp_axi.write(COMMAND_INIT_IN_TOTAL, int(command_init_in_nodes))
+                mlp_axi.write(COMMAND_COMMAND_INIT_ACK, 1)
+                #print("1. waiting in state", mlp_axi.read(STATE))
+
+            mlp_axi.write(COMMAND_COMMAND_INIT_ACK, 0)
+            mlp_axi.write(COMMAND_COMMAND_ACK, 0)
+            dma_in_buffer_size = command_init_total_node * 2 + command_init_in_nodes;
+            dma_out_buffer_size = 0;
+
+            resp_s = serial_in[base_addr:base_addr+command_init_total_node]
+            base_addr += command_init_total_node
+            bias_s = serial_in[base_addr:base_addr+command_init_total_node]
+            base_addr += command_init_total_node
+            V_s = serial_in[base_addr:base_addr+command_init_in_nodes]
+            base_addr += command_init_in_nodes
+
+            dma_in_buf = xlnk.cma_array(shape=(dma_in_buffer_size,1), dtype=np.int32)
+            dma_in_buf[:] = np.concatenate((resp_s, bias_s, V_s)).reshape(-1,1)
+
+            dma.sendchannel.transfer(dma_in_buf)
+            dma.sendchannel.wait()
+            while(mlp_axi.read(STATE)==2):
+                print("2. waiting in state %d", mlp_axi.read(STATE))
+            del dma_in_buf
+            #time_e = 0
+           
+            for layer_idx in range(command_layer):
+                out_total, in_total = out_total_s[layer_idx], in_total_s[layer_idx]
+                while (mlp_axi.read(COMMAND_VALID)):
+                    mlp_axi.write(COMMAND_IN_TOTAL, int(in_total))
+                    mlp_axi.write(COMMAND_OUT_TOTAL, int(out_total))
+                    mlp_axi.write(COMMAND_COMMAND_ACK, 1)
+                mlp_axi.write(COMMAND_COMMAND_ACK, 0)
+                o_id = serial_in[base_addr:base_addr+out_total]
+                base_addr += out_total
+                i_id = serial_in[base_addr:base_addr+in_total]
+                base_addr += in_total
+                W_serial = serial_in[base_addr:base_addr+out_total*in_total]
+                base_addr += out_total*in_total
+
+                dma_in_buffer_size = out_total + in_total +out_total*in_total
+                dma_in_buf = xlnk.cma_array(shape=(dma_in_buffer_size,1), dtype=np.int32)
+                dma_in_buf[:] = np.concatenate((o_id, i_id, W_serial)).reshape(-1,1)
+                dma.sendchannel.transfer(dma_in_buf)
+                dma.sendchannel.wait()
+                del dma_in_buf
+                while(mlp_axi.read(STATE)<7):
+                    print("3. waiting in state", mlp_axi.read(STATE))
+                if layer_idx == command_layer - 1:
+                    dma_out_buffer_size = out_total_s[-1]
+                    #dma_out_buffer_size = 2 * (in_total_s[0] + out_total_s[0]) + COLS * in_total_s[0]
+                    dma_out_buf = xlnk.cma_array(shape=(dma_out_buffer_size,1), dtype=np.int32)
+                    dma.recvchannel.transfer(dma_out_buf)
+                    while (mlp_axi.read(STATE)==8):
+                        mlp_axi.write(COMMAND_DONE, 1)
+                        mlp_axi.write(COMMAND_DONE_ACK, 1)
+                    if(mlp_axi.read(STATE)==9):
+                        dma.recvchannel.wait()
+                else:
+                    while (mlp_axi.read(STATE)==8):
+                        mlp_axi.write(COMMAND_DONE, 0)
+                        mlp_axi.write(COMMAND_DONE_ACK, 1)
+                mlp_axi.write(COMMAND_DONE, 0)
+                mlp_axi.write(COMMAND_DONE_ACK, 0)    
+            try:
+                ret = [float(v/quantize_1_time) for v in dma_out_buf]
+                del dma_out_buf
+            except:
+                print("command_layer", command_layer)
+            return ret
+        else:
+            return inputs
 
 
 
